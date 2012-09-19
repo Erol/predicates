@@ -21,7 +21,7 @@ class PredicatesTest < MiniTest::Unit::TestCase
     end
   end
 
-  def test_define_a_predicate_with_an_existing_attribute_accessor
+  def test_define_a_predicate_with_a_predefined_attribute_accessor
     klass = Class.new WithPredicates do
       attr_accessor :attribute
       predicate :attribute?
@@ -41,7 +41,7 @@ class PredicatesTest < MiniTest::Unit::TestCase
     refute object.attribute?
   end
 
-  def test_define_a_predicate_with_an_existing_attribute_reader
+  def test_define_a_predicate_with_only_a_predefined_attribute_reader
     klass = Class.new WithPredicates do
       attr_reader :attribute
       predicate :attribute?
@@ -59,20 +59,45 @@ class PredicatesTest < MiniTest::Unit::TestCase
     assert object.attribute?
   end
 
-  def test_define_a_predicate_with_an_existing_attribute_method
+  def test_define_a_predicate_with_only_a_predefined_attribute_writer
     klass = Class.new WithPredicates do
-      def attribute
-        1
-      end
-
+      attr_writer :attribute
       predicate :attribute?
     end
 
     object = klass.new
 
     assert object.respond_to?(:attribute?)
-    refute object.respond_to?(:attribute=)
+    refute object.respond_to?(:attribute)
 
+    object.attribute = 1
     assert object.attribute?
+
+    object.attribute = true
+    assert object.attribute?
+
+    object.attribute = nil
+    refute object.attribute?
+  end
+
+  def test_define_a_predicate_with_no_predefined_attribute_accessor
+    klass = Class.new WithPredicates do
+      predicate :attribute?
+    end
+
+    object = klass.new
+
+    assert object.respond_to?(:attribute?)
+    assert object.respond_to?(:attribute=)
+    refute object.respond_to?(:attribute)
+
+    object.attribute = 1
+    assert object.attribute?
+
+    object.attribute = true
+    assert object.attribute?
+
+    object.attribute = nil
+    refute object.attribute?
   end
 end

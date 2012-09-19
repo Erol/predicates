@@ -32,7 +32,7 @@ Include Predicates in your class or model and define the predicate by supplying 
     user.confirmed = 1
     user.confirmed? #=> true
 
-Predicates will define the attribute for you using `attr_accessor` if the attribute you supplied has not been defined yet.
+Predicates will also create an attribute writer for you using `attr_writer` if the attribute you supplied has not been predefined.
 
     class User
       extend Predicates

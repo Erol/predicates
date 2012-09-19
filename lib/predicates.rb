@@ -3,8 +3,8 @@ require "predicates/version"
 module Predicates
   class NameError < Exception; end
 
-  # Defines a predicate (truth accessor) for a given attribute. If the attribute has not been defined yet,
-  # the attribute will be created along with the predicate via +attr_accessor+.
+  # Defines a predicate (truth accessor) for a given attribute. If the attribute has not been predefined,
+  # an attribute writer will be created along with the predicate.
   #
   # == Class Example
   #
@@ -42,10 +42,10 @@ module Predicates
       raise NameError
     end
 
-    attr_accessor attribute unless method_defined? attribute
+    attr_writer attribute unless method_defined? attribute
 
     define_method method do
-      !!send(attribute)
+      !!eval("@#{attribute}")
     end
   end
 end
