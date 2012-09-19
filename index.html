@@ -54,7 +54,7 @@
 <p>Include Predicates in your class or model and define the predicate by supplying an attribute:</p>
 
 <pre><code>class User
-  include Predicates
+  extend Predicates
 
   attr_accessor :confirmed
   predicate :confirmed?
@@ -68,7 +68,7 @@ user.confirmed? #=&gt; true
 <p>Predicates will define the attribute for you using <code>attr_accessor</code> if the attribute you supplied has not been defined yet.</p>
 
 <pre><code>class User
-  include Predicates
+  extend Predicates
 
   predicate :confirmed?
 end
