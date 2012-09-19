@@ -22,7 +22,7 @@ Or install it yourself as:
 Include Predicates in your class or model and define the predicate by supplying an attribute:
 
     class User
-      include Predicates
+      extend Predicates
 
       attr_accessor :confirmed
       predicate :confirmed?
@@ -35,7 +35,7 @@ Include Predicates in your class or model and define the predicate by supplying 
 Predicates will define the attribute for you using `attr_accessor` if the attribute you supplied has not been defined yet.
 
     class User
-      include Predicates
+      extend Predicates
 
       predicate :confirmed?
     end

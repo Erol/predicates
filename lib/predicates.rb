@@ -9,7 +9,7 @@ module Predicates
   # == Class Example
   #
   #   class User
-  #     include Predicates
+  #     extend Predicates
   #
   #     predicate :confirmed?
   #   end
