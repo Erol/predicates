@@ -2,24 +2,9 @@
 
 [Predicates](http://erol.github.com/predicates) are truth accessors for your Ruby classes and models. Yep, that's about it.
 
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'predicates'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install predicates
-
 ## Usage
 
-Include Predicates in your class or model and define the predicate by supplying an attribute:
+Extend your class or model with Predicates and define the predicate by supplying an attribute:
 
     class User
       extend Predicates
@@ -43,6 +28,20 @@ Predicates will also create an attribute writer for you using `attr_writer` if t
     user = User.new
     user.confirmed = 1
     user.confirmed? #=> true
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'predicates'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install predicates
 
 ## Contributing
 
