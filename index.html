@@ -30,7 +30,36 @@
       <section>
         <h1>Predicates</h1>
 
-<p>Truth accessors for your Ruby classes. Yep, that's about it.</p>
+<p><a href="http://erol.github.com/predicates">Predicates</a> are truth accessors for your Ruby classes and models. Yep, that's about it.</p>
+
+<h2>Usage</h2>
+
+<p>Extend your class or model with Predicates and define the predicate by supplying an attribute:</p>
+
+<pre><code>class User
+  extend Predicates
+
+  attr_accessor :confirmed
+  predicate :confirmed?
+end
+
+user = User.new
+user.confirmed = 1
+user.confirmed? #=&gt; true
+</code></pre>
+
+<p>Predicates will also create an attribute writer for you using <code>attr_writer</code> if the attribute you supplied has not been predefined.</p>
+
+<pre><code>class User
+  extend Predicates
+
+  predicate :confirmed?
+end
+
+user = User.new
+user.confirmed = 1
+user.confirmed? #=&gt; true
+</code></pre>
 
 <h2>Installation</h2>
 
@@ -47,36 +76,6 @@
 <p>Or install it yourself as:</p>
 
 <pre><code>$ gem install predicates
-</code></pre>
-
-<h2>Usage</h2>
-
-<p>Include Predicates in your class or model and define the predicate by supplying an attribute:</p>
-
-<pre><code>class User
-  extend Predicates
-
-  attr_accessor :confirmed
-  predicate :confirmed?
-end
-
-user = User.new
-user.confirmed = 1
-user.confirmed? #=&gt; true
-</code></pre>
-
-<p>Predicates will define the attribute for you using <code>attr_accessor</code> if the attribute you supplied has not been defined yet.</p>
-
-<pre><code>class User
-  extend Predicates
-
-  predicate :confirmed?
-end
-
-user = User.new
-user.confirmed = 1
-user.confirmed #=&gt; 1
-user.confirmed? #=&gt; true
 </code></pre>
 
 <h2>Contributing</h2>
