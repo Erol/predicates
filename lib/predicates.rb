@@ -15,9 +15,9 @@ module Predicates
   #   end
   #
   #   user = User.new
-  #   user.single = 1
+  #   user.confirmed = 1
   #   user.confirmed? #=> true
-  #   user.single = nil
+  #   user.confirmed = nil
   #   user.confirmed? #=> false
   #
   # == Ohm Model Example

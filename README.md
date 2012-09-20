@@ -42,7 +42,6 @@ Predicates will also create an attribute writer for you using `attr_writer` if t
 
     user = User.new
     user.confirmed = 1
-    user.confirmed #=> 1
     user.confirmed? #=> true
 
 ## Contributing
