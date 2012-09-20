@@ -1,6 +1,6 @@
 # Predicates
 
-Truth accessors for your Ruby classes. Yep, that's about it.
+[Predicates](http://erol.github.com/predicates) are truth accessors for your Ruby classes and models. Yep, that's about it.
 
 
 ## Installation
