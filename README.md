@@ -6,6 +6,8 @@
 
 Extend your class or model with Predicates and define the predicate by supplying an attribute:
 
+    require 'predicates'
+
     class User
       extend Predicates
 
