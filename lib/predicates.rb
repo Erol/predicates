@@ -45,7 +45,7 @@ module Predicates
     attr_writer attribute unless method_defined? attribute
 
     define_method method do
-      !!eval("@#{attribute}")
+      !!instance_variable_get(:"@#{attribute}")
     end
   end
 end
