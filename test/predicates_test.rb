@@ -59,6 +59,23 @@ class PredicatesTest < MiniTest::Unit::TestCase
     assert object.attribute?
   end
 
+  def test_define_a_predicate_with_only_a_predefined_attribute_method
+    klass = Class.new WithPredicates do
+      def attribute
+        1
+      end
+
+      predicate :attribute?
+    end
+
+    object = klass.new
+
+    assert object.respond_to?(:attribute?)
+    refute object.respond_to?(:attribute=)
+
+    assert object.attribute?
+  end
+
   def test_define_a_predicate_with_only_a_predefined_attribute_writer
     klass = Class.new WithPredicates do
       attr_writer :attribute

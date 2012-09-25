@@ -44,8 +44,14 @@ module Predicates
 
     attr_writer attribute unless method_defined? attribute
 
-    define_method method do
-      !!instance_variable_get(:"@#{attribute}")
+    if method_defined? attribute
+      define_method method do
+        !!send(attribute)
+      end
+    else
+      define_method method do
+        !!instance_variable_get(:"@#{attribute}")
+      end
     end
   end
 end
